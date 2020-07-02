@@ -25,37 +25,37 @@ Info.plist 에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App K
 
 ```xml
 <dict>
-    <!-- Native App Key -->
-	<key>KAKAO_APP_KEY</key>
-	<string>{APP_KEY}</string>
+<!-- Native App Key -->
+<key>KAKAO_APP_KEY</key>
+<string>{APP_KEY}</string>
 
-    <!-- Bundle URL Scheme -->
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>kakao{APP_KEY}</string>
-			</array>
-		</dict>
-	</array>
+<!-- Bundle URL Scheme -->
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>kakao{APP_KEY}</string>
+        </array>
+    </dict>
+</array>
 
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-        <!-- 공통 -->
-		<string>kakao{APP_KEY}</string>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <!-- 공통 -->
+    <string>kakao{APP_KEY}</string>
 
-        <!-- 간편로그인 -->
-		<string>kakaokompassauth</string>
-		<string>storykompassauth</string>
+    <!-- 간편로그인 -->
+    <string>kakaokompassauth</string>
+    <string>storykompassauth</string>
 
-        <!-- 카카오톡링크 -->
-		<string>kakaolink</string>
-		<string>kakaotalk-5.9.7</string>
+    <!-- 카카오톡링크 -->
+    <string>kakaolink</string>
+    <string>kakaotalk-5.9.7</string>
 
-        <!-- 카카오스토리링크 -->
-		<string>storylink</string>
-	</array>
+    <!-- 카카오스토리링크 -->
+    <string>storylink</string>
+</array>
 </dict>
 ```
 
