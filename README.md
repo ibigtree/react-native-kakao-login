@@ -62,6 +62,8 @@ Info.plist 에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App K
 AppDelegate.m에 다음 내용 추가
 
 ```objective-c
+#import <KakaoOpenSDK/KakaoOpenSDK.h>
+
 /*
  Deprecated(iOS 4.2-9.0)
  https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application?language=objc
