@@ -124,7 +124,7 @@ AndroidManifest.xml에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Nati
 
 ## Usage
 ```javascript
-import KakaoLogin from 'react-native-kakao-login';
+import KakaoLogin from '@ibigtree/react-native-kakao-login';
 
 async function processLogin() {
     try {
