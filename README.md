@@ -23,7 +23,7 @@ React Native를 위한 카카오 로그인 라이브러리. [@react-native-seoul
 
 Info.plist 에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App Key로 대체)
 
-```
+```plist
 <dict>
     <!-- Native App Key --!>
 	<key>KAKAO_APP_KEY</key>
@@ -61,7 +61,7 @@ Info.plist 에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App K
 
 AppDelegate.m에 다음 내용 추가
 
-```
+```objective-c
 /*
  Deprecated(iOS 4.2-9.0)
  https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application?language=objc
@@ -101,18 +101,18 @@ Xo8WBi6jzSxKDVR4drqm84yr9iU=
 
 android/build.gradle에 다음 내용 추가
 
-```
+```groovy
 allprojects {
     repositories {
         // ...
-+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
 ```
 
 AndroidManifest.xml에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App Key로 대체)
 
-```
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application>
 +        <meta-data android:name="com.kakao.sdk.AppKey" android:value="{APP_KEY}" />
