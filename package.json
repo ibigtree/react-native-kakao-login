@@ -1,0 +1,39 @@
+{
+  "name": "@ibigtree/react-native-kakao-login",
+  "title": "React Native Kakao Login",
+  "version": "1.0.0",
+  "description": "Kakao Login for React Native",
+  "main": "index.js",
+  "files": [
+    "android",
+    "index.js",
+    "ios",
+    "react-native-kakao-login.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibigtree/react-native-kakao-login.git",
+    "baseUrl": "https://github.com/ibigtree/react-native-kakao-login"
+  },
+  "keywords": [
+    "react-native",
+    "kakaotalk"
+  ],
+  "author": {
+    "name": "Daehan Kim",
+    "email": "daehankim@ibigtree.kr"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.113.0",
+    "react-native": "^0.62.2"
+  }
+}
