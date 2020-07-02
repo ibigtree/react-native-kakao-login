@@ -23,13 +23,13 @@ React Native를 위한 카카오 로그인 라이브러리. [@react-native-seoul
 
 Info.plist 에 다음 내용 추가 ({APP_KEY} 는 사용할 앱의 Native App Key로 대체)
 
-```plist
+```xml
 <dict>
-    <!-- Native App Key --!>
+    <!-- Native App Key -->
 	<key>KAKAO_APP_KEY</key>
 	<string>{APP_KEY}</string>
 
-    <!-- Bundle URL Scheme --!
+    <!-- Bundle URL Scheme -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
