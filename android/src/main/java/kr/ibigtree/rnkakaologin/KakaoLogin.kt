@@ -10,14 +10,19 @@ import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.LogoutResponseCallback
 import com.kakao.util.exception.KakaoException
 
-class KakaoLoginModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), ISessionCallback, ActivityEventListener {
+class KakaoLoginModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), ISessionCallback, ActivityEventListener, LifecycleEventListener {
     private var loginPromise: Promise? = null
+    private var initialized: Boolean = false
 
     override fun getName(): String {
         return "KakaoLogin"
     }
 
-    init {
+    private fun initKakaoSDK() {
+        if (initialized) {
+            return;
+        }
+
         if (KakaoSDK.getAdapter() == null) {
             KakaoSDK.init(object : KakaoAdapter() {
                 override fun getApplicationConfig(): IApplicationConfig {
@@ -28,10 +33,14 @@ class KakaoLoginModule(private val reactContext: ReactApplicationContext) : Reac
 
         reactContext.addActivityEventListener(this)
         Session.getCurrentSession().addCallback(this)
+
+        initialized = true
     }
 
     @ReactMethod
     fun login(promise: Promise) {
+        initKakaoSDK()
+
         loginPromise = promise
 
         Session.getCurrentSession().open(AuthType.KAKAO_TALK, reactContext.currentActivity)
@@ -39,6 +48,7 @@ class KakaoLoginModule(private val reactContext: ReactApplicationContext) : Reac
 
     @ReactMethod
     fun logout(promise: Promise) {
+        initKakaoSDK()
 
         UserManagement.getInstance().requestLogout(object: LogoutResponseCallback() {
             override fun onCompleteLogout() {
@@ -87,6 +97,20 @@ class KakaoLoginModule(private val reactContext: ReactApplicationContext) : Reac
         reactContext.removeActivityEventListener(this)
         Session.getCurrentSession().removeCallback(this)
         super.onCatalystInstanceDestroy()
+    }
+
+    override fun onHostResume() {
+        initKakaoSDK()
+    }
+
+    override fun onHostPause() {
+
+    }
+
+    override fun onHostDestroy() {
+        if (initialized) {
+            Session.getCurrentSession().removeCallback(this)
+        }
     }
 }
 

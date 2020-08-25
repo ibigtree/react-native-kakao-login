@@ -37,6 +37,7 @@ buildscript {
         }
         dependencies {
             classpath "com.android.tools.build:gradle:${safeExtGet('androidToolsVersion', DEFAULT_ANDROID_TOOLS_VERSION)}"
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', DEFAULT_KOTLIN_VERSION)}"
         }
     } else {
         repositories {
