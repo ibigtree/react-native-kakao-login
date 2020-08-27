@@ -95,7 +95,11 @@ class KakaoLoginModule(private val reactContext: ReactApplicationContext) : Reac
 
     override fun onCatalystInstanceDestroy() {
         reactContext.removeActivityEventListener(this)
-        Session.getCurrentSession().removeCallback(this)
+
+        if (initialized) {
+            Session.getCurrentSession().removeCallback(this)
+        }
+
         super.onCatalystInstanceDestroy()
     }
 
