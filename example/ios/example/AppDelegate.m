@@ -4,9 +4,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
-#import <KakaoOpenSDK/KakaoOpenSDK.h>
-
-#if DEBUG
+#ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
 #import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
@@ -29,17 +27,21 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#if DEBUG
+#ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
-  
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"example"
                                             initialProperties:nil];
-  
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-  
+
+  if (@available(iOS 13.0, *)) {
+      rootView.backgroundColor = [UIColor systemBackgroundColor];
+  } else {
+      rootView.backgroundColor = [UIColor whiteColor];
+  }
+
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
@@ -57,29 +59,4 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 }
 
-/*
- Deprecated(iOS 4.2-9.0)
- https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application?language=objc
- */
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-  if ([KOSession isKakaoAccountLoginCallback:url]) {
-    return [KOSession handleOpenURL:url];
-  }
-  
-  return NO;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
-{
-  if ([KOSession isKakaoAccountLoginCallback:url]) {
-    return [KOSession handleOpenURL:url];
-  }
-  return NO;
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-  [KOSession handleDidBecomeActive];
-}
 @end

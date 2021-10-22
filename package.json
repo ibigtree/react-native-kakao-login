@@ -33,7 +33,6 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "flow-bin": "^0.113.0",
-    "react-native": "^0.62.2"
+    "react-native": "^0.66.1"
   }
 }
