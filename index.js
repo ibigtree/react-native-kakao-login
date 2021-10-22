@@ -1,19 +1,18 @@
-// @flow
-import { NativeModules } from 'react-native';
+import {NativeModules} from "react-native";
 
-const { KakaoLogin } = NativeModules;
+const {KakaoLogin} = NativeModules;
 
 export type KakaoAuthTokenInfo = {
-    accessToken: string,
-    refreshToken: string,
+  accessToken: string,
+  refreshToken: string,
 };
 
 async function login(): Promise<KakaoAuthTokenInfo> {
-    return await KakaoLogin.login();
+  return await KakaoLogin.login();
 }
 
 async function logout(): Promise<boolean> {
-    return await KakaoLogin.logout();
+  return await KakaoLogin.logout();
 }
 
 export default {login, logout};

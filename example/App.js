@@ -1,4 +1,3 @@
-// @flow
 /* eslint-disable no-alert */
 import React from 'react';
 import {Button, SafeAreaView} from 'react-native';
