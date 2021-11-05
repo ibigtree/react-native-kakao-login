@@ -1,7 +1,7 @@
 {
   "name": "@ibigtree/react-native-kakao-login",
   "title": "React Native Kakao Login",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Kakao Login for React Native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
