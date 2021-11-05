@@ -3,8 +3,8 @@
   "title": "React Native Kakao Login",
   "version": "0.0.14",
   "description": "Kakao Login for React Native",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "android",
     "index.js",
