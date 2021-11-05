@@ -1,13 +1,11 @@
-declare module '@ibigtree/react-native-kakao-login' {
-    export interface KakaoAuthTokenInfo {
-        accessToken: string;
-        refreshToken: string;
-    }
-
-    namespace KakaoLogin {
-        function login(): Promise<KakaoAuthTokenInfo>;
-        function logout(): Promise<boolean>;
-    }
-
-    export default KakaoLogin;
+export interface KakaoAuthTokenInfo {
+    accessToken: string;
+    refreshToken: string;
 }
+
+interface KakaoLogin {
+    login(): Promise<KakaoAuthTokenInfo>;
+    logout(): Promise<boolean>;
+}
+
+export default KakaoLogin;
